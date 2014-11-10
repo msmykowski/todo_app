@@ -1,5 +1,4 @@
 class TodoApp < CommandLineApp
-  attr_reader :input, :output
 
   def initialize(input, output)
     @projects_array=[]
@@ -33,6 +32,12 @@ class TodoApp < CommandLineApp
     @projects_array[@projects_array.index(project_to_edit)]=new_name
   end
 
+  def delete
+    puts "Please enter the project name to delete:\n"
+    item_to_delete=gets.chomp
+    @projects_array[@projects_array.index(item_to_delete)]=nil
+  end
+
   def run
 
     while true
@@ -48,6 +53,8 @@ class TodoApp < CommandLineApp
         create
       elsif input=="edit"
         edit
+      elsif input=="delete"
+        delete
       elsif input=="quit"
         break
       end
